@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/a3b5f8a8-238c-4bb7-95a6-c0b75682b181/console.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/ro/ubbcluj/map/repository/UserDbRepository.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/socialnetwork/socialnetwork/repository/MessageDbRepository.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/socialnetwork/socialnetwork/repository/UserDbRepository.java" dialect="GenericSQL" />
   </component>
 </project>
