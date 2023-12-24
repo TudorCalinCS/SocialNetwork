@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="335.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.socialnetwork.socialnetwork.controllers.SendMessageDialogue">
+    <stylesheets>
+        <URL value="@stylesheet.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="125.0" layoutY="12.0" text="Send Message" textAlignment="CENTER" underline="true">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Label layoutX="31.0" layoutY="50.0" text="From:" />
+      <TextField fx:id="senderFullNameField" editable="false" layoutX="69.0" layoutY="45.0" />
+      <Label layoutX="32.0" layoutY="83.0" text="To:" />
+      <ComboBox fx:id="senderFriends" layoutX="70.0" layoutY="82.0" prefWidth="150.0" />
+      <TextArea fx:id="message" layoutX="72.0" layoutY="130.0" prefHeight="115.0" prefWidth="200.0" />
+      <Button onAction="#handleSendMessage" layoutX="136.0" layoutY="270.0" mnemonicParsing="false" text="Send Message" textAlignment="CENTER" />
+      <Label layoutX="32.0" layoutY="112.0" text="Message:" />
+   </children>
+
+</AnchorPane>

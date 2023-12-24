@@ -1,0 +1,8 @@
+/* stylesheet.css */
+.root {
+    -fx-font-family: "Segoe UI"; /* font elemente */
+}
+
+.table-view {
+    -fx-font-family: "Segoe UI"; /* font table view */
+}

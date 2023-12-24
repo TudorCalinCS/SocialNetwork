@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import java.net.URL?>
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.socialnetwork.socialnetwork.controllers.UserUpdateDialogue">
+    <stylesheets>
+        <URL value="@stylesheet.css"/>
+    </stylesheets>
+    <top>
+        <Label text="Update User" textAlignment="CENTER" underline="true" BorderPane.alignment="CENTER">
+
+            <BorderPane.margin>
+                <Insets bottom="10.0" top="20.0"/>
+            </BorderPane.margin>
+        </Label>
+    </top>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="20.0" left="50.0" right="50.0" top="20.0"/>
+            </BorderPane.margin>
+            <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                <Label text="ID">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+
+                </Label>
+                <TextField fx:id="idField" editable="false" opacity="0.5">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                </TextField>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                <Label text="New First Name">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+
+                </Label>
+                <TextField fx:id="firstNameField">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                </TextField>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                <Label text="New Last Name">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+
+                </Label>
+                <TextField fx:id="lastNameField">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                </TextField>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="163.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0"/>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                <VBox.margin>
+                    <Insets bottom="5.0" top="20.0"/>
+                </VBox.margin>
+                <Button mnemonicParsing="false" onAction="#handleUpdate" prefHeight="20.0" prefWidth="80.0"
+                        text="Update" textAlignment="CENTER" underline="true">
+                    <padding>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0"/>
+                    </padding>
+
+                </Button>
+                <Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="20.0" prefWidth="80.0"
+                        text="Cancel" textAlignment="CENTER" underline="true">
+
+                    <padding>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0"/>
+                    </padding>
+                </Button>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
