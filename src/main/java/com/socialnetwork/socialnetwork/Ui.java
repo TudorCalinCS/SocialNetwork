@@ -25,7 +25,7 @@ public class Ui {
         String nume = myObj.nextLine();
         System.out.println("\nPreume: ");
         String prenume = myObj.nextLine();
-        service.addUser(nume, prenume);
+        //service.addUser(nume, prenume);
 
     }
 

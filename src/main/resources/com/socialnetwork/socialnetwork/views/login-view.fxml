@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="335.0" prefWidth="372.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.socialnetwork.socialnetwork.controllers.LoginController">
+    <stylesheets>
+        <URL value="@stylesheet.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="165.0" layoutY="21.0" text="Login" textAlignment="CENTER" underline="true">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <Label layoutX="31.0" layoutY="50.0" />
+      <TextField fx:id="fullNameField" layoutX="125.0" layoutY="77.0" promptText="First-Last" />
+      <Label layoutX="37.0" layoutY="83.0" text="Full Name:" />
+      <Label layoutX="39.0" layoutY="119.0" text="Password:" />
+      <Button layoutX="151.0" layoutY="214.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="23.0" prefWidth="66.0" text="Login">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="260.0" layoutY="296.0" mnemonicParsing="false" onAction="#handleCreate" text="Create account" />
+      <PasswordField fx:id="passwordField" layoutX="127.0" layoutY="117.0" />
+   </children>
+
+</AnchorPane>

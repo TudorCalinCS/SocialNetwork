@@ -1,6 +1,7 @@
 package com.socialnetwork.socialnetwork;
 
 import com.socialnetwork.socialnetwork.controllers.AdminController;
+import com.socialnetwork.socialnetwork.controllers.LoginController;
 import com.socialnetwork.socialnetwork.domain.Message;
 import com.socialnetwork.socialnetwork.domain.Prietenie;
 import com.socialnetwork.socialnetwork.domain.Utilizator;
@@ -28,12 +29,13 @@ public class StartApplication extends Application {
 
         ServiceFX serviceFX = new ServiceFX(userRepository, friendshipRepository, messageRepo);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("/com/socialnetwork/socialnetwork/views/main-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("/com/socialnetwork/socialnetwork/views/login-view.fxml"));
+        //serviceFX.addEntities();
 
         Scene scene = new Scene(fxmlLoader.load());
-        AdminController adminController = fxmlLoader.getController();
-        adminController.setService(serviceFX);
-        stage.setTitle("Social Network");
+        LoginController loginController = fxmlLoader.getController();
+        loginController.setService(serviceFX);
+        stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
 

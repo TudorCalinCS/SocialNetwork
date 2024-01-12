@@ -7,11 +7,20 @@ public class Utilizator extends Entity<UUID> {
     private String firstName;
     private String lastName;
     private Map<UUID, Utilizator> friends;
+    private String password;
 
+    public Utilizator(String firstName, String lastName, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.friends = new HashMap<>();
+        this.setId(UUID.randomUUID());
+    }
     public Utilizator(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.friends=new HashMap<>();
+        this.password=this.getPassword();
+        this.friends = new HashMap<>();
         this.setId(UUID.randomUUID());
     }
 
@@ -31,12 +40,16 @@ public class Utilizator extends Entity<UUID> {
         this.lastName = lastName;
     }
 
-    public int getNumberOfFriends(){
+    public int getNumberOfFriends() {
         return this.friends.size();
     }
 
-    public List<Utilizator> getFriends(){
+    public List<Utilizator> getFriends() {
         return new ArrayList<>(this.friends.values());
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     @Override
@@ -62,15 +75,11 @@ public class Utilizator extends Entity<UUID> {
         return Objects.hash(getFirstName(), getLastName(), getFriends());
     }
 
-    public void addFriend(Utilizator u){
+    public void addFriend(Utilizator u) {
         this.friends.put(u.getId(), u);
     }
 
-    public boolean removeFriend(Utilizator u){
-        return this.friends.remove(u.getId()) != null;
-    }
-
-    public String getFullName(){
-        return firstName+" "+lastName;
+    public String getFullName() {
+        return firstName + " " + lastName;
     }
 }

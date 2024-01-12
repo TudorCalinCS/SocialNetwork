@@ -38,8 +38,8 @@ public class ServiceFX implements Observable<SocialNetworkEvent> {
      * User functions
      */
     //Add user
-    public void addUser(String nume, String prenume) {
-        Utilizator u = new Utilizator(nume, prenume);
+    public void addUser(String nume, String prenume, String password) {
+        Utilizator u = new Utilizator(nume, prenume, password);
         utilizatorRepo.save(u);
         this.notify(new UserChangeEvent(EventType.ADD_USER, u, null));
     }
@@ -85,8 +85,25 @@ public class ServiceFX implements Observable<SocialNetworkEvent> {
         utilizatorRepo.findAll().forEach(lista::add);
         return lista;
     }
+
     //Retrieving user object by his name
     public Utilizator getUserByNumePrenume(String nume, String prenume) {
+        return printUtilizatorii().stream()
+                .filter(u -> u.getFirstName().equals(nume) && u.getLastName().equals(prenume))
+                .findFirst()
+                .orElse(null);
+    }
+
+    //Retrieving user object by his name and password
+    public Utilizator getUserByNamePassword(String nume, String prenume, String password) {
+        return printUtilizatorii().stream()
+                .filter(u -> u.getFirstName().equals(nume) && u.getLastName().equals(prenume) && u.getPassword().equals(password))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Utilizator existUser(String nume, String prenume) {
+
         return printUtilizatorii().stream()
                 .filter(u -> u.getFirstName().equals(nume) && u.getLastName().equals(prenume))
                 .findFirst()
@@ -106,10 +123,12 @@ public class ServiceFX implements Observable<SocialNetworkEvent> {
         u1.addFriend(u2);
         u2.addFriend(u1);
     }
+
     //Update friendship in database
     public void updateFriendship(UUID uuid) {
         prietenieRepo.acceptFriendRequest(uuid);
     }
+
     //List of mainFriend's friendships
     public Iterable<Prietenie> getUsersFriends(Utilizator mainFriend) {
         Iterable<Prietenie> list;
@@ -122,12 +141,14 @@ public class ServiceFX implements Observable<SocialNetworkEvent> {
         }
         return userList;
     }
+
     //List of all friendships
     public List<Prietenie> printPrieteniile() {
         ArrayList<Prietenie> lista = new ArrayList<>();
         prietenieRepo.findAll().forEach(lista::add);
         return lista;
     }
+
     //Deleting friendship by user's name
     public void removePrietenie(String n1, String p1, String n2, String p2) {
         Utilizator u1 = getUserByNumePrenume(n1, p1);
@@ -153,10 +174,12 @@ public class ServiceFX implements Observable<SocialNetworkEvent> {
         messageRepo.save(message1);
         return message1;
     }
+
     //Updating message in database
     public void updateMessage(Message message) {
         messageRepo.update(message, "", "");
     }
+
     //List user's most recent messages
     public List<Message> getDistinctMessagesBetweenUsers(Utilizator user1) {
         List<Message> allMessages = (List<Message>) messageRepo.findAll();
@@ -172,6 +195,7 @@ public class ServiceFX implements Observable<SocialNetworkEvent> {
 
         return distinctMessages;
     }
+
     //List of messages between 2 users ordered by date
     public List<Message> getUsersOrderedMessages(Utilizator u1, Utilizator u2) {
         List<Message> allMessages = (List<Message>) messageRepo.findAll();
@@ -182,7 +206,9 @@ public class ServiceFX implements Observable<SocialNetworkEvent> {
         return userMessages;
     }
 
-    /** Helping functions */
+    /**
+     * Helping functions
+     */
     //DFS
     private List<Utilizator> DFS(Utilizator u, Map<UUID, Boolean> set) {
         List<Utilizator> list = new ArrayList<>();
@@ -262,12 +288,14 @@ public class ServiceFX implements Observable<SocialNetworkEvent> {
 
         return max + 1;
     }
+
     public Prietenie getPrietenieByUser(Utilizator u) {
         return printPrieteniile().stream()
                 .filter(p -> p.getUser1().equals(u) || p.getUser2().equals(u))
                 .findFirst()
                 .orElse(null);
     }
+
     /**
      * Generating Entities
      */
@@ -278,65 +306,70 @@ public class ServiceFX implements Observable<SocialNetworkEvent> {
 
         int indexNume = rand.nextInt(listaNume.length);
         int indexPrenume = rand.nextInt(listaPrenume.length);
-        Utilizator u1 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume]);
+        Utilizator u1 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume], "password");
         utilizatorRepo.save(u1);
 
         indexNume = rand.nextInt(listaNume.length);
         indexPrenume = rand.nextInt(listaPrenume.length);
-        Utilizator u2 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume]);
+        Utilizator u2 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume], "password");
         utilizatorRepo.save(u2);
 
         indexNume = rand.nextInt(listaNume.length);
         indexPrenume = rand.nextInt(listaPrenume.length);
-        Utilizator u3 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume]);
+        Utilizator u3 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume], "password");
         utilizatorRepo.save(u3);
 
         indexNume = rand.nextInt(listaNume.length);
         indexPrenume = rand.nextInt(listaPrenume.length);
-        Utilizator u4 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume]);
+        Utilizator u4 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume], "password");
         utilizatorRepo.save(u4);
 
         indexNume = rand.nextInt(listaNume.length);
         indexPrenume = rand.nextInt(listaPrenume.length);
-        Utilizator u5 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume]);
+        Utilizator u5 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume], "password");
         utilizatorRepo.save(u5);
 
         indexNume = rand.nextInt(listaNume.length);
         indexPrenume = rand.nextInt(listaPrenume.length);
-        Utilizator u6 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume]);
+        Utilizator u6 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume], "password");
         utilizatorRepo.save(u6);
 
         indexNume = rand.nextInt(listaNume.length);
         indexPrenume = rand.nextInt(listaPrenume.length);
-        Utilizator u7 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume]);
+        Utilizator u7 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume], "password");
         utilizatorRepo.save(u7);
 
         indexNume = rand.nextInt(listaNume.length);
         indexPrenume = rand.nextInt(listaPrenume.length);
-        Utilizator u8 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume]);
+        Utilizator u8 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume], "password");
         utilizatorRepo.save(u8);
 
         indexNume = rand.nextInt(listaNume.length);
         indexPrenume = rand.nextInt(listaPrenume.length);
-        Utilizator u9 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume]);
+        Utilizator u9 = new Utilizator(listaNume[indexNume], listaPrenume[indexPrenume], "password");
         utilizatorRepo.save(u9);
 
         addPrietenie(u1.getFirstName(), u1.getLastName(), u3.getFirstName(), u3.getLastName());
         Prietenie p = getPrietenieByUser(u1);
         prietenieRepo.acceptFriendRequest(p.getId());
         p.confirmStatus();
+        addMessage(u1.getFirstName(), u1.getLastName(), u3.getFirstName(), u3.getLastName(), "random message1");
         addPrietenie(u5.getFirstName(), u5.getLastName(), u3.getFirstName(), u3.getLastName());
         p = getPrietenieByUser(u5);
         prietenieRepo.acceptFriendRequest(p.getId());
         p.confirmStatus();
+        addMessage(u5.getFirstName(), u5.getLastName(), u3.getFirstName(), u3.getLastName(), "random message2");
         addPrietenie(u1.getFirstName(), u1.getLastName(), u7.getFirstName(), u7.getLastName());
         p = getPrietenieByUser(u7);
         prietenieRepo.acceptFriendRequest(p.getId());
         p.confirmStatus();
+        addMessage(u1.getFirstName(), u1.getLastName(), u7.getFirstName(), u7.getLastName(), "random message3");
         addPrietenie(u8.getFirstName(), u8.getLastName(), u9.getFirstName(), u9.getLastName());
         p = getPrietenieByUser(u9);
         prietenieRepo.acceptFriendRequest(p.getId());
         p.confirmStatus();
+        addMessage(u8.getFirstName(), u8.getLastName(), u9.getFirstName(), u9.getLastName(), "random message4");
+
 
     }
 

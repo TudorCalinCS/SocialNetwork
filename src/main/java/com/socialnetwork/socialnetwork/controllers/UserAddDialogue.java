@@ -15,6 +15,8 @@ public class UserAddDialogue {
     private TextField firstNameField;
     @FXML
     private TextField lastNameField;
+    @FXML
+    private TextField passwordField;
 
     // Boolean variable which indicates if the cancel button was pressed.
     private boolean cancelled = false;
@@ -29,12 +31,12 @@ public class UserAddDialogue {
         // Retrieving data from the fields.
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
-
+        String password = passwordField.getText();
         // Inserting the data into a map.
         Map<String, String> map = new HashMap<>();
         map.put("firstName", firstName);
         map.put("lastName", lastName);
-
+        map.put("password", password);
         // Closing the dialogue.
         Stage stage = (Stage) this.firstNameField.getScene().getWindow();
         stage.close();

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="481.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.socialnetwork.socialnetwork.controllers.AdminController">
+    <stylesheets>
+        <URL value="@stylesheet.css" />
+    </stylesheets>
+    <children>
+        <TableView fx:id="userTableView" editable="true" prefHeight="218.0" prefWidth="319.0">
+            <columns>
+                <TableColumn fx:id="userID" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="userFirstName" prefWidth="116.00000762939453" text="FirstName" />
+                <TableColumn fx:id="userLastName" prefWidth="127.19998168945312" text="LastName" />
+            </columns>
+        </TableView>
+        <Button layoutX="321.0" layoutY="52.0" mnemonicParsing="false"  prefHeight="23.0" prefWidth="82.0" text="Add User" textAlignment="CENTER" />
+        <Button layoutX="321.0" layoutY="133.0" mnemonicParsing="false" onAction="#userRemoveAction" prefHeight="23.0" prefWidth="82.0" text="Delete User" textAlignment="CENTER">
+            <font>
+                <Font name="Segoe UI" size="12.0" />
+            </font>
+        </Button>
+        <Button fx:id="previousButton" layoutY="219.0" mnemonicParsing="false" onAction="#onPrevious" text="Previous" />
+        <Button fx:id="nextButton" layoutX="257.0" layoutY="219.0" mnemonicParsing="false" onAction="#onNext" prefHeight="23.0" prefWidth="61.0" text="Next" />
+        <Button layoutX="321.0" layoutY="90.0" mnemonicParsing="false" onAction="#userUpdateAction" prefHeight="23.0" prefWidth="82.0" text="Update User" textAlignment="CENTER" />
+        <Button layoutX="321.0" layoutY="176.0" mnemonicParsing="false" onAction="#userAddFriendAction" prefHeight="26.0" prefWidth="82.0" text="Add friend" textAlignment="CENTER" />
+        <TableView fx:id="friendsTableView" layoutX="410.0" prefHeight="188.0" prefWidth="486.0">
+            <columns>
+                <TableColumn fx:id="friendshipID" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="friendFirstName" prefWidth="117.0" text="Friend's First Name" />
+                <TableColumn fx:id="friendLastName" prefWidth="119.20001220703125" text="Friend's Last Name" />
+                <TableColumn fx:id="friendshipDate" prefWidth="84.00002441406252" text="Date" />
+                <TableColumn fx:id="friendshipStatus" text="Status" />
+            </columns>
+        </TableView>
+        <Button fx:id="confirmFriendshipButton" disable="true" layoutX="745.0" layoutY="205.0" mnemonicParsing="false" onAction="#setConfirmFriendshipButton" prefHeight="26.0" prefWidth="150.0" text="Confirm Friend Request" textAlignment="CENTER" />
+        <Button fx:id="declineFriendshipButton" disable="true" layoutX="410.0" layoutY="206.0" mnemonicParsing="false" onAction="#setDeclineFriendshipButton" text="Delete Friend Request" />
+      <TableView fx:id="messageTableView" layoutY="267.0" prefHeight="218.0" prefWidth="333.0">
+        <columns>
+          <TableColumn fx:id="messageID" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="senderName" prefWidth="93.20001983642578" text="Friend's Name" />
+            <TableColumn fx:id="messageText" prefWidth="164.39999389648438" text="Text" />
+        </columns>
+      </TableView>
+      <Button layoutX="340.0" layoutY="267.0" mnemonicParsing="false" onAction="#sendMessageAction" prefHeight="23.0" prefWidth="114.0" text="Send Message" />
+      <Button layoutX="339.0" layoutY="313.0" mnemonicParsing="false" onAction="#replyAction" prefHeight="23.0" prefWidth="114.0" text="Reply" />
+      <Button layoutX="342.0" layoutY="364.0" mnemonicParsing="false" onAction="#viewConvoAction" prefHeight="23.0" prefWidth="114.0" text="View conversation" />
+      <TextField fx:id="pageSizeField" layoutX="184.0" layoutY="219.0" prefHeight="23.0" prefWidth="28.0" />
+      <Label layoutX="83.0" layoutY="221.0" text="Elements on page:" />
+    </children>
+</AnchorPane>
